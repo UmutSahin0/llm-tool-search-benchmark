@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt ruff==0.16.6
+      - name: Check Python style
+        run: |
+          ruff check benchmark analyze_results.py compare_experiments.py
+          ruff format --check benchmark analyze_results.py compare_experiments.py
+      - name: Compile Python sources
+        run: python -B -m compileall -q benchmark analyze_results.py compare_experiments.py

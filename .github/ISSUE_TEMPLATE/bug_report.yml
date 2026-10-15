@@ -1,0 +1,29 @@
+name: Benchmark bug
+description: Report a reproducible issue in a benchmark run or its analysis.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Never include API keys, .env contents, or unredacted sensitive prompts."
+  - type: input
+    id: provider
+    attributes:
+      label: Provider and model
+      placeholder: "openrouter / openai/gpt-5.6-luna"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Reproducible command
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed result
+      description: Include sanitized terminal output or relevant raw_runs.csv rows.
+    validations:
+      required: true

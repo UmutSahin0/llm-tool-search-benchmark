@@ -1,0 +1,22 @@
+# Secrets and local Python state
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+work/
+outputs/
+
+# Local research, generated benchmark outputs, and notebook checkpoints
+docs/
+experiments/[0-9][0-9][0-9]/
+experiments/compare_*/
+data/*.csv
+data/run_metadata.json
+notebooks/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
